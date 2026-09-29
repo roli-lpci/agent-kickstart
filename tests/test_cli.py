@@ -1,5 +1,6 @@
 import json
 import subprocess
+import sys
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -454,3 +455,13 @@ class EnvelopeTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class VersionFlagTests(unittest.TestCase):
+    def test_version_flag_prints_package_version_without_a_command(self):
+        result = subprocess.run(
+            [sys.executable, "-m", "agent_kickstart", "--version"],
+            capture_output=True, text=True, check=False,
+        )
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(result.stdout.strip(), f"agent-kickstart {__version__}")
