@@ -513,6 +513,7 @@ def uninstall(target: Path) -> int:
 
 def parser() -> argparse.ArgumentParser:
     result = argparse.ArgumentParser(prog=TOOL)
+    result.add_argument("--version", action="version", version=f"{TOOL} {__version__}")
     sub = result.add_subparsers(dest="command", required=True)
     commands = {}
     for name in ("install", "uninstall"):
