@@ -150,7 +150,7 @@ The helper checks for Claude Code and Node.js, copies the Kickstart harness only
 into that project, and prints the correct one-line start command for your
 terminal. If you know only one Python is on your PATH, the shorter
 `pip install agent-kickstart` and `agent-kickstart install` are equivalent.
-To confirm which release you installed, run `agent-kickstart --version`.
+To confirm which release you installed, run `python -c "from importlib.metadata import version; print(version('agent-kickstart'))"`.
 
 If you used an earlier version, the `claude-kickstart` command remains available as a
 compatibility alias. New installations and documentation use `agent-kickstart`.
